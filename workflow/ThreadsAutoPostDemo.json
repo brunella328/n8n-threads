@@ -1,0 +1,488 @@
+{
+  "name": "ThreadsAutoPost2",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 0,
+              "triggerAtHour": 20
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        620
+      ],
+      "id": "386ce5c6-8998-420b-a29f-bd814cfd313e",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk",
+          "mode": "list",
+          "cachedResultName": "n8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "threads-post",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('GetLastestUnpublish').item.json.id }}",
+            "ContainerId": "={{ $json.id }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "Content",
+              "displayName": "Content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image",
+              "displayName": "Image",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Tag",
+              "displayName": "Tag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Posted",
+              "displayName": "Posted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ContainerId",
+              "displayName": "ContainerId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1740,
+        620
+      ],
+      "id": "0c12ae9b-b7d9-4668-b72b-7e2939706892",
+      "name": "InsertContainerId",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "N1etBoB89BT2VkDr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.threads.net/v1.0/your_user_id/threads_publish",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "your_long_lived_token"
+            },
+            {
+              "name": "creation_id",
+              "value": "={{ $json.ContainerId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1960,
+        800
+      ],
+      "id": "afdb2527-2977-4e92-9e0a-78a10cf02346",
+      "name": "PublishPost"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk",
+          "mode": "list",
+          "cachedResultName": "n8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "threads-post",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('InsertContainerId').item.json.id }}",
+            "Posted": "True"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Content",
+              "displayName": "Content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image",
+              "displayName": "Image",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Tag",
+              "displayName": "Tag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Posted",
+              "displayName": "Posted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ContainerId",
+              "displayName": "ContainerId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2240,
+        620
+      ],
+      "id": "13c01086-733d-4e64-bc70-713aebd80feb",
+      "name": "UpdatePostStatus",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "N1etBoB89BT2VkDr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.threads.net/v1.0/your_user_id/threads",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "media_type",
+              "value": "TEXT"
+            },
+            {
+              "name": "access_token",
+              "value": "your_long_lived_token"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.Content }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1540,
+        800
+      ],
+      "id": "f566f702-7a1b-420f-9b6f-8fa1ef3edcce",
+      "name": "CreatePostContainer"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk",
+          "mode": "list",
+          "cachedResultName": "n8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "threads-post",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1120,
+        620
+      ],
+      "id": "9dc38156-f1b1-4a9d-9e8a-55e2b3a910a3",
+      "name": "GetAllPost",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "retryOnFail": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "N1etBoB89BT2VkDr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk",
+          "mode": "list",
+          "cachedResultName": "n8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "threads-post",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Posted",
+              "lookupValue": "=false"
+            },
+            {
+              "lookupColumn": "ContainerId",
+              "lookupValue": "="
+            }
+          ]
+        },
+        "options": {
+          "returnFirstMatch": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1320,
+        620
+      ],
+      "id": "88af2e12-8df4-466e-a1da-14514f4fc7c6",
+      "name": "GetLastestUnpublish",
+      "alwaysOutputData": false,
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "N1etBoB89BT2VkDr",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "GetAllPost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "InsertContainerId": {
+      "main": [
+        [
+          {
+            "node": "PublishPost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PublishPost": {
+      "main": [
+        [
+          {
+            "node": "UpdatePostStatus",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreatePostContainer": {
+      "main": [
+        [
+          {
+            "node": "InsertContainerId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetAllPost": {
+      "main": [
+        [
+          {
+            "node": "GetLastestUnpublish",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetLastestUnpublish": {
+      "main": [
+        [
+          {
+            "node": "CreatePostContainer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "cfc3f8ba-15a0-42e4-a188-c2a814f2328a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9f4f0cd46588ed77382c376951864ff43e9aba1591932f46a00f7d679cdf1ee9"
+  },
+  "id": "aU9uZf6QMNlABvX9",
+  "tags": []
+}

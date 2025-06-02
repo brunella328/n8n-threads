@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "1c1c3ead-c067-432d-94c0-60dc988910b5",
+		"name": "Threads",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27589987"
+	},
+	"item": [
+		{
+			"name": "LongToken",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://graph.threads.net/access_token?grant_type=th_exchange_token&client_secret=1da69ab3e9e61f1421434dea01a85a01&access_token=THAATjrAtZCSc9BUVN0VGlEdVpVaFJkbE83VzN1eWNObDFNNVUxN3Y1aXhtMzg0dGFYNWJCcklxeGRPWHJ0djNLX0xVLTlWM0pNYjBWTF9hUE92OHF6OVVZAeWFrN2NHMk94TkloYVI4NVdQQW5CLXBsVldadFFoRXhXZAS1adlZArNUo1cEZAzWjROR2R4TlFoTzN3N0hrZAG5jaVpKdwZDZD",
+					"protocol": "https",
+					"host": [
+						"graph",
+						"threads",
+						"net"
+					],
+					"path": [
+						"access_token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "th_exchange_token"
+						},
+						{
+							"key": "client_secret",
+							"value": "1da69ab3e9e61f1421434dea01a85a01"
+						},
+						{
+							"key": "access_token",
+							"value": "THAATjrAtZCSc9BUVN0VGlEdVpVaFJkbE83VzN1eWNObDFNNVUxN3Y1aXhtMzg0dGFYNWJCcklxeGRPWHJ0djNLX0xVLTlWM0pNYjBWTF9hUE92OHF6OVVZAeWFrN2NHMk94TkloYVI4NVdQQW5CLXBsVldadFFoRXhXZAS1adlZArNUo1cEZAzWjROR2R4TlFoTzN3N0hrZAG5jaVpKdwZDZD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADDContainer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "media_type",
+							"value": "TEXT",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "Hello world",
+							"type": "text"
+						},
+						{
+							"key": "access_token",
+							"value": "THAATjrAtZCSc9BUVNzbHFMVC1JNm42NlZAsbTM0UHNSUzlKZA1dpUUZAVTTRqZAGxoUHhITVZAoTjhtaURpandNMW9VUmQydWVBTDhGUXVFNVdxTGg4aUpkQy1zSUNoUV9Ea0FRODJpQjFjQjlDaHVXamY3Y0U4RDdta0lUYUIyZAXJPMWlrdwZDZD",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://graph.threads.net/v1.0/9707604199330448/threads",
+					"protocol": "https",
+					"host": [
+						"graph",
+						"threads",
+						"net"
+					],
+					"path": [
+						"v1.0",
+						"9707604199330448",
+						"threads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "media_type",
+							"value": "TEXT",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "text",
+							"value": "Hello world",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "access_token",
+							"value": "THAATjrAtZCSc9BUVNzbHFMVC1JNm42NlZAsbTM0UHNSUzlKZA1dpUUZAVTTRqZAGxoUHhITVZAoTjhtaURpandNMW9VUmQydWVBTDhGUXVFNVdxTGg4aUpkQy1zSUNoUV9Ea0FRODJpQjFjQjlDaHVXamY3Y0U4RDdta0lUYUIyZAXJPMWlrdwZDZD",
+							"type": "text"
+						},
+						{
+							"key": "creation_id",
+							"value": "18095224543560076",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://graph.threads.net/v1.0/9707604199330448/threads_publish",
+					"protocol": "https",
+					"host": [
+						"graph",
+						"threads",
+						"net"
+					],
+					"path": [
+						"v1.0",
+						"9707604199330448",
+						"threads_publish"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
