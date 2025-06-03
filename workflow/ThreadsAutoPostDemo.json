@@ -1,5 +1,5 @@
 {
-  "name": "ThreadsAutoPost2",
+  "name": "ThreadsAutoPostDemo",
   "nodes": [
     {
       "parameters": {
@@ -15,10 +15,10 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        880,
-        620
+        0,
+        0
       ],
-      "id": "386ce5c6-8998-420b-a29f-bd814cfd313e",
+      "id": "660caa06-5289-4a2f-aa47-19a056f98192",
       "name": "Schedule Trigger",
       "disabled": true
     },
@@ -129,11 +129,13 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        1740,
-        620
+        860,
+        0
       ],
-      "id": "0c12ae9b-b7d9-4668-b72b-7e2939706892",
+      "id": "c7be13c5-9c97-4a3b-b8f8-6ecc97b00f9b",
       "name": "InsertContainerId",
+      "executeOnce": true,
+      "retryOnFail": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "N1etBoB89BT2VkDr",
@@ -163,11 +165,13 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1960,
-        800
+        1080,
+        180
       ],
-      "id": "afdb2527-2977-4e92-9e0a-78a10cf02346",
-      "name": "PublishPost"
+      "id": "e3e58234-ded2-4778-8e33-c79b558eb1b9",
+      "name": "PublishPost",
+      "executeOnce": true,
+      "retryOnFail": true
     },
     {
       "parameters": {
@@ -246,11 +250,13 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        2240,
-        620
+        1360,
+        0
       ],
-      "id": "13c01086-733d-4e64-bc70-713aebd80feb",
+      "id": "bed1627a-b54d-47f0-b633-2b2701291855",
       "name": "UpdatePostStatus",
+      "executeOnce": true,
+      "retryOnFail": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "N1etBoB89BT2VkDr",
@@ -284,11 +290,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1540,
-        800
+        660,
+        180
       ],
-      "id": "f566f702-7a1b-420f-9b6f-8fa1ef3edcce",
-      "name": "CreatePostContainer"
+      "id": "65f4ec1a-5461-456c-9064-840125a56d9e",
+      "name": "CreatePostContainer",
+      "alwaysOutputData": false,
+      "retryOnFail": true,
+      "executeOnce": true
     },
     {
       "parameters": {
@@ -311,12 +320,12 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        1120,
-        620
+        240,
+        0
       ],
-      "id": "9dc38156-f1b1-4a9d-9e8a-55e2b3a910a3",
+      "id": "dc2282d3-df1e-414c-a4a2-43995d5b8a53",
       "name": "GetAllPost",
-      "alwaysOutputData": true,
+      "alwaysOutputData": false,
       "executeOnce": true,
       "retryOnFail": true,
       "credentials": {
@@ -353,18 +362,21 @@
             }
           ]
         },
-        "options": {}
+        "options": {
+          "returnFirstMatch": true
+        }
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        1320,
-        620
+        440,
+        0
       ],
-      "id": "88af2e12-8df4-466e-a1da-14514f4fc7c6",
+      "id": "a4c26b99-5cc3-48ad-92ae-83bd7519915d",
       "name": "GetLastestUnpublish",
       "alwaysOutputData": false,
       "executeOnce": true,
+      "retryOnFail": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "N1etBoB89BT2VkDr",
@@ -446,11 +458,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "bea4f32a-ae32-497a-a053-97657eb5b87d",
+  "versionId": "f441c105-f556-4630-8700-3de9fac5bcd7",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "9f4f0cd46588ed77382c376951864ff43e9aba1591932f46a00f7d679cdf1ee9"
   },
-  "id": "aU9uZf6QMNlABvX9",
+  "id": "T79dGgMesOCsl3ro",
   "tags": []
 }
