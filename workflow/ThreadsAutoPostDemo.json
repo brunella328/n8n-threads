@@ -6,8 +6,8 @@
         "rule": {
           "interval": [
             {
-              "daysInterval": 0,
-              "triggerAtHour": 20
+              "field": "cronExpression",
+              "expression": "0 20 * * *"
             }
           ]
         }
@@ -19,17 +19,18 @@
         620
       ],
       "id": "386ce5c6-8998-420b-a29f-bd814cfd313e",
-      "name": "Schedule Trigger"
+      "name": "Schedule Trigger",
+      "disabled": true
     },
     {
       "parameters": {
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk",
+          "value": "14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k",
           "mode": "list",
-          "cachedResultName": "n8n",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit?usp=drivesdk"
+          "cachedResultName": "n8n_demo",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -41,11 +42,11 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "id": "={{ $('GetLastestUnpublish').item.json.id }}",
-            "ContainerId": "={{ $json.id }}"
+            "ContainerId": "={{ $json.id }}",
+            "row_number": "={{ $('GetLastestUnpublish').item.json.row_number }}"
           },
           "matchingColumns": [
-            "id"
+            "row_number"
           ],
           "schema": [
             {
@@ -106,7 +107,7 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true,
-              "removed": false
+              "removed": true
             },
             {
               "id": "row_number",
@@ -117,7 +118,7 @@
               "type": "string",
               "canBeUsedToMatch": true,
               "readOnly": true,
-              "removed": true
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -173,61 +174,31 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk",
+          "value": "14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k",
           "mode": "list",
-          "cachedResultName": "n8n",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit?usp=drivesdk"
+          "cachedResultName": "n8n_demo",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "threads-post",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k/edit#gid=0"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "id": "={{ $('InsertContainerId').item.json.id }}",
+            "row_number": "={{ $('InsertContainerId').item.json.row_number }}",
             "Posted": "True"
           },
           "matchingColumns": [
-            "id"
+            "row_number"
           ],
           "schema": [
             {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
               "id": "Content",
               "displayName": "Content",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": true
-            },
-            {
-              "id": "Image",
-              "displayName": "Image",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": true
-            },
-            {
-              "id": "Tag",
-              "displayName": "Tag",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -264,7 +235,7 @@
               "type": "string",
               "canBeUsedToMatch": true,
               "readOnly": true,
-              "removed": true
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -323,17 +294,17 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk",
+          "value": "14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k",
           "mode": "list",
-          "cachedResultName": "n8n",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit?usp=drivesdk"
+          "cachedResultName": "n8n_demo",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "threads-post",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k/edit#gid=0"
         },
         "options": {}
       },
@@ -359,33 +330,30 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk",
+          "value": "14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k",
           "mode": "list",
-          "cachedResultName": "n8n",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit?usp=drivesdk"
+          "cachedResultName": "n8n_demo",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "threads-post",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_C40kGpnqqzMhfcQsKCgOWFoujv1mcSXHqBDlmINZJk/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14KWSsYaPdiLy1E5b6C5DC1Q1DNX92CxCrmI6h1sQp0k/edit#gid=0"
         },
         "filtersUI": {
           "values": [
             {
               "lookupColumn": "Posted",
-              "lookupValue": "=false"
+              "lookupValue": "={{false}}"
             },
             {
-              "lookupColumn": "ContainerId",
-              "lookupValue": "="
+              "lookupColumn": "ContainerId"
             }
           ]
         },
-        "options": {
-          "returnFirstMatch": true
-        }
+        "options": {}
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -478,7 +446,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "cfc3f8ba-15a0-42e4-a188-c2a814f2328a",
+  "versionId": "bea4f32a-ae32-497a-a053-97657eb5b87d",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "9f4f0cd46588ed77382c376951864ff43e9aba1591932f46a00f7d679cdf1ee9"
