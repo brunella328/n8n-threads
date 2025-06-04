@@ -383,6 +383,31 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "fromEmail": "yourmail@gmail.com",
+        "toEmail": "yourmail@gmail.com",
+        "subject": "Threads 貼文已發出",
+        "emailFormat": "text",
+        "text": "=第 {{ $json.row_number -1 }} 則 Threads 貼文已發出，\n貼文 ID: {{ $('PublishPost').item.json.id }}\n貼文內容: {{ $('GetLastestUnpublish').item.json.Content }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1600,
+        0
+      ],
+      "id": "eee7aa8c-d5c3-4008-90ab-7e945cd05263",
+      "name": "Send Email",
+      "webhookId": "ef514aad-76d5-47aa-b71d-9d30af831225",
+      "credentials": {
+        "smtp": {
+          "id": "fHjlR6R3zXOSnwUW",
+          "name": "SMTP account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -452,13 +477,24 @@
           }
         ]
       ]
+    },
+    "UpdatePostStatus": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "f441c105-f556-4630-8700-3de9fac5bcd7",
+  "versionId": "fc5a23ce-b389-4654-919d-a94b47b12c39",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "9f4f0cd46588ed77382c376951864ff43e9aba1591932f46a00f7d679cdf1ee9"
