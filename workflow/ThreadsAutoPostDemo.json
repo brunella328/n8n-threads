@@ -19,8 +19,7 @@
         0
       ],
       "id": "660caa06-5289-4a2f-aa47-19a056f98192",
-      "name": "Schedule Trigger",
-      "disabled": true
+      "name": "Schedule Trigger"
     },
     {
       "parameters": {
@@ -402,6 +401,8 @@
       "id": "eee7aa8c-d5c3-4008-90ab-7e945cd05263",
       "name": "Send Email",
       "webhookId": "ef514aad-76d5-47aa-b71d-9d30af831225",
+      "executeOnce": true,
+      "retryOnFail": true,
       "credentials": {
         "smtp": {
           "id": "fHjlR6R3zXOSnwUW",
@@ -494,7 +495,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "fc5a23ce-b389-4654-919d-a94b47b12c39",
+  "versionId": "b0261de3-460d-484e-b58e-6aa438c49682",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "9f4f0cd46588ed77382c376951864ff43e9aba1591932f46a00f7d679cdf1ee9"
